@@ -1,0 +1,7 @@
+<div class="text">
+  <p *ngIf="msg">{{ msg.message }}</p>
+  <p *ngIf="!msg">Something went wrong!</p>
+</div>
+<button tuiButton type="button" size="m" (click)="dismiss()">
+  Reload Page
+</button>

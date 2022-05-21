@@ -8,9 +8,12 @@ import {
 } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { CustomError, SafeAny } from '../classes';
+import { ErrorDialogService } from '../modules';
 
 @Injectable()
 export class CustomHttpInterceptor implements HttpInterceptor {
+  constructor(private readonly _dialogService: ErrorDialogService) {}
+
   intercept(
     request: HttpRequest<SafeAny>,
     next: HttpHandler
@@ -23,7 +26,7 @@ export class CustomHttpInterceptor implements HttpInterceptor {
             : 'Server response error, try again later.';
         const customError = new CustomError(msg, error.status);
 
-        // TODO open error dialog
+        this._dialogService.openDialog(customError);
         return throwError(() => error);
       })
     );
