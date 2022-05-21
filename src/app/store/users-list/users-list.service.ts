@@ -6,13 +6,24 @@ import { assertProperties } from '../../utils/utils';
 import { IUser, User } from './users-model';
 
 export const GITHUB_USER_PROPS = [
-  'login',
-  'id',
   'avatar_url',
-  'url',
+  'events_url',
   'followers_url',
+  'following_url',
+  'gists_url',
+  'gravatar_id',
+  'html_url',
+  'id',
+  'login',
+  'node_id',
+  'organizations_url',
+  'received_events_url',
   'repos_url',
-  'email',
+  'site_admin',
+  'starred_url',
+  'subscriptions_url',
+  'type',
+  'url',
 ];
 
 @Injectable({ providedIn: 'root' })
@@ -22,17 +33,23 @@ export class UsersListService {
     private readonly _http: HttpService
   ) {}
 
-  searchByName(query: string): Observable<unknown> {
-    return this._http.get(`/users/${query}`).pipe(
-      filter(users =>
-        users.every((user: Record<string, unknown>) =>
+  searchByName(searchedWord: string): Observable<unknown> {
+    const query = `${searchedWord}+in:login&type=Users`;
+    return this._http.get(`/search/users?q=${query}`).pipe(
+      filter(({ items }) =>
+        items.every((user: Record<string, unknown>) =>
           assertProperties(GITHUB_USER_PROPS, user)
         )
       ),
-      map((users: IUser[]) => this.store.add(users.map(user => new User(user))))
+      map(({ items }: { items: IUser[] }) =>
+        this.store.add(items.map(user => new User(user)))
+      )
     );
   }
 
+  setQuery(query: string): void {
+    this.store.update({ query });
+  }
   setActive(user: User): void {
     this.store.setActive(user.id);
   }

@@ -5,10 +5,20 @@ import { UsersListRoutingModule } from './users-list-routing.module';
 import { UsersListSearchbarComponent } from './components/users-list-searchbar/users-list-searchbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TuiInputModule } from '@taiga-ui/kit';
-import { TuiTextfieldControllerModule } from '@taiga-ui/core';
+import {
+  TuiScrollbarModule,
+  TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import { UsersListContainerComponent } from './components/users-list-container/users-list-container.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { TuiAvatarModule } from '@taiga-ui/kit';
 
 @NgModule({
-  declarations: [UsersListComponent, UsersListSearchbarComponent],
+  declarations: [
+    UsersListComponent,
+    UsersListSearchbarComponent,
+    UsersListContainerComponent,
+  ],
   imports: [
     CommonModule,
     UsersListRoutingModule,
@@ -16,6 +26,9 @@ import { TuiTextfieldControllerModule } from '@taiga-ui/core';
     FormsModule,
     TuiInputModule,
     TuiTextfieldControllerModule,
+    TuiScrollbarModule,
+    ScrollingModule,
+    TuiAvatarModule,
   ],
 })
 export class UsersListModule {}

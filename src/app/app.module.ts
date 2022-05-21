@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { HeaderModule } from './layout/header/header.module';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CustomHttpInterceptor, ErrorDialogModule, ThemesModule } from './core';
 
 const APP_MODULES = [HeaderModule, ErrorDialogModule, ThemesModule];
@@ -29,6 +29,7 @@ const STORE_MODULES = [AkitaNgDevtools.forRoot()];
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     [...APP_MODULES],
     [...UI_LIB_MODULES],
     [...STORE_MODULES],
@@ -37,6 +38,7 @@ const STORE_MODULES = [AkitaNgDevtools.forRoot()];
     {
       provide: HTTP_INTERCEPTORS,
       useClass: CustomHttpInterceptor,
+      multi: true,
     },
   ],
   bootstrap: [AppComponent],

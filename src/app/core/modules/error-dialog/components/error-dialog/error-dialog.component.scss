@@ -1,7 +1,8 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 
 .text {

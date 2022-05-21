@@ -1,1 +1,31 @@
-<p>users-list works!</p>
+<!--<tui-scrollbar>-->
+<!--  <cdk-virtual-scroll-viewport-->
+<!--    tuiScrollable-->
+<!--    class="viewport tui-zero-scrollbar"-->
+<!--    [itemSize]="45"-->
+<!--    [maxBufferPx]="500"-->
+<!--    [minBufferPx]="400">-->
+<!--  </cdk-virtual-scroll-viewport>-->
+<!--</tui-scrollbar>-->
+<table>
+  <thead>
+    <tr>
+      <th>Avatar</th>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>
+        <tui-avatar [avatarUrl]="user.avatar"></tui-avatar>
+      </td>
+      <td>
+        {{ user.login }}
+      </td>
+      <td>
+        {{ user.email }}
+      </td>
+    </tr>
+  </tbody>
+</table>

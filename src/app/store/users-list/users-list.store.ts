@@ -7,12 +7,16 @@ import {
 } from '@datorama/akita';
 import { User } from './users-model';
 
-export interface UserListState extends EntityState<User>, ActiveState {}
+export interface UserListState extends EntityState<User>, ActiveState {
+  query: string;
+}
 
 @Injectable({ providedIn: 'root' })
-@StoreConfig({ name: 'posts' })
+@StoreConfig({ name: 'users' })
 export class UsersListStore extends EntityStore<UserListState> {
   constructor() {
-    super();
+    super({
+      query: '',
+    });
   }
 }
