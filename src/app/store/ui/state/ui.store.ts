@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { EntityState, EntityStore, StoreConfig } from '@datorama/akita';
-import { Ui } from './ui.model';
+import { UI } from './ui.model';
+import { ThemeType } from '../../../core';
 
-export interface UiState extends EntityState<Ui> {
+export interface UiState extends EntityState<UI> {
   ui: {
-    theme: 'default';
+    theme: ThemeType;
   };
 }
 
@@ -12,6 +13,8 @@ export interface UiState extends EntityState<Ui> {
 @StoreConfig({ name: 'ui' })
 export class UiStore extends EntityStore<UiState> {
   constructor() {
-    super();
+    super({
+      ui: { theme: 'default' },
+    });
   }
 }

@@ -1,1 +1,10 @@
-<p>users-list-searchbar works!</p>
+<form [formGroup]="form">
+  <div class="tui-form__row">
+    <tui-input
+      formControlName="searchedName"
+      icon="tuiIconSearch"
+      [tuiTextfieldCleaner]="true">
+      <input tuiTextfield placeholder="search user by name" />
+    </tui-input>
+  </div>
+</form>

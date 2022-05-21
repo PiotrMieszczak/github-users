@@ -1,7 +1,7 @@
-export interface Ui {
-  id: number | string;
-}
+import { ThemeType } from '../../../core';
 
-export function createUi(params: Partial<Ui>) {
-  return {} as Ui;
+export interface UI {
+  ui: {
+    theme: ThemeType;
+  };
 }

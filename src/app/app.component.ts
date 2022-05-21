@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ThemeType } from './core';
+import { UiQuery } from './store/ui/state/ui.query';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +10,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Github users';
-  enableDarkTheme = false;
+  theme$: Observable<ThemeType>;
+
+  constructor(private readonly _uiQuery: UiQuery) {
+    this.theme$ = this._uiQuery.select(state => state.ui.theme);
+  }
 }
