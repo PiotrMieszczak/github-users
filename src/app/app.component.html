@@ -1,6 +1,8 @@
 <tui-root>
+  <app-dark-theme *ngIf="enableDarkTheme"></app-dark-theme>
   <app-header [title]="title"> </app-header>
   <div class="tui-container container--margin">
+    <button (click)="changetheme()">CHANGE</button>
     <router-outlet></router-outlet>
   </div>
 </tui-root>

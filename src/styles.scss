@@ -2,3 +2,8 @@
 :root {
   --header-height: 4rem;
 }
+
+body {
+  color:  var(--tui-text-01);
+  background: var(--tui-base-01);
+}
