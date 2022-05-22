@@ -1,24 +1,31 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Spectator, createComponentFactory } from '@ngneat/spectator/jest';
 import { UsersListSearchbarComponent } from './users-list-searchbar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { UsersListService } from '../../../../store/users-list';
+import { TuiInputModule } from '@taiga-ui/kit';
+import { TuiTextfieldControllerModule } from '@taiga-ui/core';
 
 describe('UsersListSearchbarComponent', () => {
-  let component: UsersListSearchbarComponent;
-  let fixture: ComponentFixture<UsersListSearchbarComponent>;
+  let spectator: Spectator<UsersListSearchbarComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [UsersListSearchbarComponent],
-    }).compileComponents();
+  const createComponent = createComponentFactory({
+    component: UsersListSearchbarComponent,
+    imports: [
+      FormsModule,
+      ReactiveFormsModule,
+      RouterTestingModule,
+      TuiInputModule,
+      TuiTextfieldControllerModule,
+    ],
+    mocks: [UsersListService],
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UsersListSearchbarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeDefined();
   });
 });

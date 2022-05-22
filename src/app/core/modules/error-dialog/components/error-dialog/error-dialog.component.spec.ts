@@ -1,24 +1,43 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Spectator, createComponentFactory } from '@ngneat/spectator/jest';
 import { ErrorDialogComponent } from './error-dialog.component';
+import { CustomError } from '../../../../classes';
+import { TuiButtonModule, TuiDialogContext } from '@taiga-ui/core';
+import { POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ErrorDialogComponent', () => {
-  let component: ErrorDialogComponent;
-  let fixture: ComponentFixture<ErrorDialogComponent>;
+  let spectator: Spectator<ErrorDialogComponent>;
+  let context: TuiDialogContext<boolean | CustomError>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ErrorDialogComponent],
-    }).compileComponents();
+  const createComponent = createComponentFactory({
+    component: ErrorDialogComponent,
+    imports: [TuiButtonModule, RouterTestingModule],
+    providers: [
+      {
+        provide: POLYMORPHEUS_CONTEXT,
+        useValue: {
+          completeWith: jest.fn(),
+        },
+      },
+    ],
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ErrorDialogComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent();
+    // @ts-ignore
+    context = spectator.inject(POLYMORPHEUS_CONTEXT) as TuiDialogContext<
+      boolean | CustomError
+    >;
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeDefined();
+  });
+
+  it('should close dialog on dismiss ', () => {
+    const spy = jest.spyOn(context, 'completeWith');
+    spectator.component.dismiss();
+
+    expect(spy).toHaveBeenCalledWith(true);
   });
 });
