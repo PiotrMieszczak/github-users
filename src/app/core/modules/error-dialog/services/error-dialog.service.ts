@@ -25,7 +25,7 @@ export class ErrorDialogService {
       })
       .pipe(take(1), filter(Boolean))
       .subscribe(() => {
-        this._router.navigate(['/']);
+        this._router.navigateByUrl('/');
       });
   }
 }

@@ -3,17 +3,15 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import {
   delay,
   distinctUntilChanged,
-  filter,
   startWith,
   Subject,
   switchMap,
   takeUntil,
   tap,
-  throttleTime,
 } from 'rxjs';
 import { UsersListQuery, UsersListService } from '../../../../store/users-list';
 
-const THROTLE_TIME = 300;
+const DELAY_TIME = 300;
 
 @Component({
   selector: 'app-users-list-searchbar',
@@ -41,7 +39,7 @@ export class UsersListSearchbarComponent implements OnDestroy {
 
   startSubForNameChanges(): void {
     const search$ = this.form.controls['searchedName'].valueChanges.pipe(
-      delay(THROTLE_TIME),
+      delay(DELAY_TIME),
       distinctUntilChanged()
     );
 
@@ -50,7 +48,6 @@ export class UsersListSearchbarComponent implements OnDestroy {
         startWith(this._userQuery.getValue().query),
         tap(query => this._userService.setQuery(query)),
         switchMap(query => {
-          console.log('searched', query);
           return this._userService.searchByName(query);
         }),
         takeUntil(this.destroy$)

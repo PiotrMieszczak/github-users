@@ -34,7 +34,7 @@ export class UsersListService {
   ) {}
 
   searchByName(searchedWord: string): Observable<unknown> {
-    const query = `${searchedWord}+in:login&type=Users`;
+    const query = `${searchedWord}+in:login&type=Users&per_page=100`;
     return this._http.get(`/search/users?q=${query}`).pipe(
       filter(({ items }) =>
         items.every((user: Record<string, unknown>) =>
@@ -42,7 +42,7 @@ export class UsersListService {
         )
       ),
       map(({ items }: { items: IUser[] }) =>
-        this.store.add(items.map(user => new User(user)))
+        this.store.set(items.map(user => new User(user)))
       )
     );
   }

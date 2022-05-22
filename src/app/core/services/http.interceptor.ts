@@ -20,9 +20,10 @@ export class CustomHttpInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<SafeAny>> {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
+        console.log('error', error);
         const msg =
-          error && error.error.reason
-            ? error.error.reason
+          error && error.error.message
+            ? error.error.message
             : 'Server response error, try again later.';
         const customError = new CustomError(msg, error.status);
 

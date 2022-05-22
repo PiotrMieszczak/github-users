@@ -4,7 +4,6 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { User, UsersListQuery } from '../../../../store/users-list';
 
 @Component({
@@ -16,9 +15,7 @@ import { User, UsersListQuery } from '../../../../store/users-list';
 export class UsersListComponent implements OnInit {
   users: User[] = [];
 
-  readonly columns = ['avatar', 'name', 'email'];
   constructor(
-    private readonly _fb: FormBuilder,
     private readonly _userQuery: UsersListQuery,
     private readonly _cdr: ChangeDetectorRef
   ) {}
@@ -29,7 +26,6 @@ export class UsersListComponent implements OnInit {
 
   getUsers(): void {
     this._userQuery.selectAll().subscribe(res => {
-      console.log(res);
       this.users = res;
       this._cdr.markForCheck();
     });

@@ -64,7 +64,9 @@ describe('GetData', () => {
   });
 
   it('should get user by name', function () {
-    const url = environment.apiUrl + '/search/users?q=mojo+in:login&type=Users';
+    const url =
+      environment.apiUrl +
+      '/search/users?q=mojo+in:login&type=Users&per_page=100';
 
     spectator.service.searchByName('mojo').subscribe(res => {
       expect(res).toEqual(mockPostData);
