@@ -7,3 +7,10 @@ body {
   color: var(--tui-text-01);
   background: var(--tui-base-01);
 }
+
+.container--margin {
+  margin-top: var(--header-height);
+}
+.container--padding {
+  padding: var(--tui-padding-l);
+}

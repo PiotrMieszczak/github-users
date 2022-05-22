@@ -1,27 +1,12 @@
-<!--<tui-scrollbar>-->
-<!--  <cdk-virtual-scroll-viewport-->
-<!--    tuiScrollable-->
-<!--    class="viewport tui-zero-scrollbar"-->
-<!--    [itemSize]="45"-->
-<!--    [maxBufferPx]="500"-->
-<!--    [minBufferPx]="400">-->
-<!--  </cdk-virtual-scroll-viewport>-->
-<!--</tui-scrollbar>-->
-<table>
-  <thead>
-    <tr>
-      <th>Avatar</th>
-      <th>Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of users">
-      <td>
-        <tui-avatar [avatarUrl]="user.avatar"></tui-avatar>
-      </td>
-      <td>
-        {{ user.login }}
-      </td>
-    </tr>
-  </tbody>
-</table>
+<ng-container *ngFor="let user of users">
+  <div class="tui-col_xs-12 tui-col_lg-3 tui-col_md-4 tui-space_bottom-4">
+    <a tuiIsland [hoverable]="true" [routerLink]="['./']">
+      <div class="tui-island__content">
+        <h3 class="tui-island__title">{{ user.login }}</h3>
+        <div class="tui-island__figure">
+          <tui-avatar [rounded]="true" [avatarUrl]="user.avatar"></tui-avatar>
+        </div>
+      </div>
+    </a>
+  </div>
+</ng-container>

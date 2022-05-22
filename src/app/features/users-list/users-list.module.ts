@@ -4,7 +4,7 @@ import { UsersListComponent } from './components/users-list/users-list.component
 import { UsersListRoutingModule } from './users-list-routing.module';
 import { UsersListSearchbarComponent } from './components/users-list-searchbar/users-list-searchbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TuiInputModule } from '@taiga-ui/kit';
+import { TuiInputModule, TuiIslandModule } from '@taiga-ui/kit';
 import {
   TuiScrollbarModule,
   TuiTextfieldControllerModule,
@@ -29,6 +29,7 @@ import { TuiAvatarModule } from '@taiga-ui/kit';
     TuiScrollbarModule,
     ScrollingModule,
     TuiAvatarModule,
+    TuiIslandModule,
   ],
 })
 export class UsersListModule {}

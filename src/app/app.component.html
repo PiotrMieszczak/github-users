@@ -3,7 +3,5 @@
     <app-dark-theme *ngIf="theme === 'dark'"></app-dark-theme>
   </ng-container>
   <app-header [title]="title"> </app-header>
-  <div class="tui-container container--margin">
-    <router-outlet></router-outlet>
-  </div>
+  <router-outlet></router-outlet>
 </tui-root>
