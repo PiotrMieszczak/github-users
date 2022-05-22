@@ -44,3 +44,19 @@ export interface IUserDetailed extends IUser {
   followers: number;
   created_at: string;
 }
+
+export class Repo {
+  name: string | null;
+  url: string | null;
+  description: string | null;
+  constructor(props: IRepo) {
+    this.name = props.name;
+    this.url = props.html_url;
+    this.description = props.description;
+  }
+}
+export interface IRepo {
+  name: string;
+  html_url: string;
+  description: string;
+}

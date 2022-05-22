@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { UserDetailsStore } from './user-details.store';
 import { HttpService } from '../../http.service';
-import { filter, map, merge, mergeMap, Observable, tap } from 'rxjs';
+import { concat, filter, map, merge, mergeMap, Observable, tap } from 'rxjs';
 import { assertProperties } from '../../utils/utils';
 import { GITHUB_USER_PROPS, IUser, User } from '../users-list';
-import { IUserDetailed, UserDetailed } from './user-detail.model';
+import { IRepo, IUserDetailed, Repo, UserDetailed } from './user-detail.model';
 
 export const USER_DETAILS_PROPS = [
   'login',
@@ -68,24 +68,29 @@ export class UserDetailsService {
 
   private getFollowers(login: string): Observable<User[]> {
     return this._http.get(`/users/${login}/followers`).pipe(
-      filter(({ items }) =>
-        items.every((user: Record<string, unknown>) =>
+      filter(users =>
+        users.every((user: Record<string, unknown>) =>
           assertProperties(GITHUB_USER_PROPS, user)
         )
       ),
-      map(({ items }: { items: IUser[] }) =>
+      map((users: IUser[]) =>
         this.store.update({
-          userFollowers: items.map(user => new User(user)),
+          userFollowers: users.map(user => new User(user)),
         })
       )
     );
   }
 
-  private getRepos(login: string): Observable<any[]> {
+  private getRepos(login: string): Observable<Repo[]> {
     return this._http.get(`/users/${login}/repos`).pipe(
-      tap(repos =>
+      filter(repos =>
+        repos.every((repo: Record<string, unknown>) =>
+          assertProperties(['name', 'full_name', 'private'], repo)
+        )
+      ),
+      map((repos: IRepo[]) =>
         this.store.update({
-          userRepos: repos,
+          userRepos: repos.map(repo => new Repo(repo)),
         })
       )
     );

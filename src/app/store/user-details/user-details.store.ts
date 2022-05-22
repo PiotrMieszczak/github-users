@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
-import { UserDetailed } from './user-detail.model';
+import { Repo, UserDetailed } from './user-detail.model';
+import { User } from '../users-list';
 
 export interface UserDetailsState {
   userDetails: UserDetailed | null;
-  userFollowers: any;
-  userRepos: any;
+  userFollowers: User[] | null;
+  userRepos: Repo[] | null;
 }
 
 @Injectable({ providedIn: 'root' })

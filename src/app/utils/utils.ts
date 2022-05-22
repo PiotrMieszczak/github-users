@@ -1,5 +1,5 @@
 export function assertProperties(props: string[], object: object) {
-  const data = props.every(prop => hasOwnProperty(object, prop));
+  const data = props.some(prop => hasOwnProperty(object, prop));
   if (!data)
     throw Error('Frontend object model does not match backend object model');
 
