@@ -8,6 +8,15 @@ const routes: Routes = [
       import('./features/users-list/users-list.module').then(
         m => m.UsersListModule
       ),
+    data: { state: 'list' },
+  },
+  {
+    path: 'user/:login',
+    loadChildren: () =>
+      import('./features/user-details/user-details.module').then(
+        m => m.UserDetailsModule
+      ),
+    data: { state: 'details' },
   },
 ];
 

@@ -12,24 +12,31 @@ import {
 import { UsersListContainerComponent } from './components/users-list-container/users-list-container.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { TuiAvatarModule } from '@taiga-ui/kit';
+import { RouterModule } from '@angular/router';
+
+const COMPONENTS = [
+  UsersListComponent,
+  UsersListSearchbarComponent,
+  UsersListContainerComponent,
+];
+
+const ANGULAR_MODULES = [
+  CommonModule,
+  ReactiveFormsModule,
+  FormsModule,
+  RouterModule,
+];
+const UI_LIB_MODULES = [
+  TuiInputModule,
+  TuiTextfieldControllerModule,
+  TuiScrollbarModule,
+  ScrollingModule,
+  TuiAvatarModule,
+  TuiIslandModule,
+];
 
 @NgModule({
-  declarations: [
-    UsersListComponent,
-    UsersListSearchbarComponent,
-    UsersListContainerComponent,
-  ],
-  imports: [
-    CommonModule,
-    UsersListRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    TuiInputModule,
-    TuiTextfieldControllerModule,
-    TuiScrollbarModule,
-    ScrollingModule,
-    TuiAvatarModule,
-    TuiIslandModule,
-  ],
+  declarations: [...COMPONENTS],
+  imports: [UsersListRoutingModule, ...ANGULAR_MODULES, ...UI_LIB_MODULES],
 })
 export class UsersListModule {}

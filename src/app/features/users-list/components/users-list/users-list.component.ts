@@ -4,7 +4,12 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { User, UsersListQuery } from '../../../../store/users-list';
+import {
+  User,
+  UsersListQuery,
+  UsersListService,
+} from '../../../../store/users-list';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users-list',
@@ -17,7 +22,9 @@ export class UsersListComponent implements OnInit {
 
   constructor(
     private readonly _userQuery: UsersListQuery,
-    private readonly _cdr: ChangeDetectorRef
+    private readonly _userService: UsersListService,
+    private readonly _cdr: ChangeDetectorRef,
+    private readonly _router: Router
   ) {}
 
   ngOnInit(): void {
