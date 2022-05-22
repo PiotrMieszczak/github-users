@@ -4,6 +4,7 @@ import { UserDetailsContainerComponent } from './components/user-details-contain
 import { UserDetailsReposComponent } from './components/user-details-repos/user-details-repos.component';
 import { UserDetailsFollowersComponent } from './components/user-details-followers/user-details-followers.component';
 import { UserDetailsRoutingModule } from './user-details-routing.module';
+import { UserDetailsProfileComponent } from './components/user-details-profile/user-details-profile.component';
 
 const COMPONENTS = [
   UserDetailsContainerComponent,
@@ -13,7 +14,7 @@ const COMPONENTS = [
 const UI_LIB_MODULES = [];
 
 @NgModule({
-  declarations: [...COMPONENTS],
+  declarations: [...COMPONENTS, UserDetailsProfileComponent],
   imports: [CommonModule, UserDetailsRoutingModule],
 })
 export class UserDetailsModule {}

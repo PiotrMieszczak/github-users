@@ -54,8 +54,8 @@ export const routerAnimation: AnimationReferenceMetadata = animation(
   ],
   {
     params: {
-      enterTiming: '.6',
-      leaveTiming: '0.7',
+      enterTiming: '.2',
+      leaveTiming: '.2',
       enterDelay: '0',
       leaveDelay: '0',
     },

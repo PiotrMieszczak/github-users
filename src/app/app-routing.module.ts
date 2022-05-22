@@ -8,7 +8,7 @@ const routes: Routes = [
       import('./features/users-list/users-list.module').then(
         m => m.UsersListModule
       ),
-    data: { state: 'list' },
+    data: { animationState: 'list' },
   },
   {
     path: 'user/:login',
@@ -16,7 +16,7 @@ const routes: Routes = [
       import('./features/user-details/user-details.module').then(
         m => m.UserDetailsModule
       ),
-    data: { state: 'details' },
+    data: { animationState: 'details' },
   },
 ];
 

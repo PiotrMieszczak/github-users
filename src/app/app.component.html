@@ -3,7 +3,7 @@
     <app-dark-theme *ngIf="theme === 'dark'"></app-dark-theme>
   </ng-container>
   <app-header [title]="title"> </app-header>
-  <div [@routerAnimation]="prepareRoute(outlet)">
+  <div [@routerAnimation]="prepareRoute(outlet)" class="router-wrapper">
     <router-outlet #outlet="outlet"></router-outlet>
   </div>
 </tui-root>
