@@ -25,7 +25,6 @@ export class AppComponent {
   }
 
   prepareRoute(outlet: RouterOutlet): Data {
-    console.log(outlet);
     return (
       outlet &&
       outlet.activatedRouteData &&

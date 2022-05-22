@@ -1,10 +1,10 @@
 import { Spectator, createComponentFactory } from '@ngneat/spectator';
 
-import { UserDetailsFallowersComponent } from './user-details-followers.component';
+import { UserDetailsFollowersComponent } from './user-details-followers.component';
 
-describe('UserDetailsFallowersComponent', () => {
-  let spectator: Spectator<UserDetailsFallowersComponent>;
-  const createComponent = createComponentFactory(UserDetailsFallowersComponent);
+describe('UserDetailsFollowersComponent', () => {
+  let spectator: Spectator<UserDetailsFollowersComponent>;
+  const createComponent = createComponentFactory(UserDetailsFollowersComponent);
 
   it('should create', () => {
     spectator = createComponent();

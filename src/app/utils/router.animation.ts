@@ -11,8 +11,6 @@ import {
 export const sharedStyles = {
   position: 'fixed',
   overflow: 'hidden',
-  backfaceVisibility: 'hidden',
-  transformStyle: 'preserve-3d',
 };
 
 export const routerAnimation: AnimationReferenceMetadata = animation(
