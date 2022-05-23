@@ -4,7 +4,7 @@ import { UiQuery } from './store/ui/state/ui.query';
 import { Observable } from 'rxjs';
 import { Data, RouterOutlet } from '@angular/router';
 import { transition, trigger, useAnimation } from '@angular/animations';
-import { routerAnimation } from './utils/router.animation';
+import { routerAnimation } from './router.animation';
 
 @Component({
   selector: 'app-root',
