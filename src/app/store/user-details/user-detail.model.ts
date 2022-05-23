@@ -11,6 +11,7 @@ export class UserDetailed extends User {
   reposCount: number | null = null;
   followersCount: number | null = null;
   createdAt: Date | null = null;
+
   constructor(props: IUserDetailed) {
     super({
       login: props.login,

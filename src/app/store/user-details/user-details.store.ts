@@ -5,8 +5,8 @@ import { User } from '../users-list';
 
 export interface UserDetailsState {
   userDetails: UserDetailed | null;
-  userFollowers: User[] | null;
-  userRepos: Repo[] | null;
+  userFollowers: User[];
+  userRepos: Repo[];
 }
 
 @Injectable({ providedIn: 'root' })
@@ -15,8 +15,8 @@ export class UserDetailsStore extends Store<UserDetailsState> {
   constructor() {
     super({
       userDetails: null,
-      userFollowers: null,
-      userRepos: null,
+      userFollowers: [],
+      userRepos: [],
     });
   }
 }

@@ -67,7 +67,7 @@ export class UserDetailsService {
   }
 
   private getFollowers(login: string): Observable<User[]> {
-    return this._http.get(`/users/${login}/followers`).pipe(
+    return this._http.get(`/users/${login}/followers?q=per_page=100`).pipe(
       filter(users =>
         users.every((user: Record<string, unknown>) =>
           assertProperties(GITHUB_USER_PROPS, user)
@@ -82,7 +82,7 @@ export class UserDetailsService {
   }
 
   private getRepos(login: string): Observable<Repo[]> {
-    return this._http.get(`/users/${login}/repos`).pipe(
+    return this._http.get(`/users/${login}/repos?q=per_page=100`).pipe(
       filter(repos =>
         repos.every((repo: Record<string, unknown>) =>
           assertProperties(['name', 'full_name', 'private'], repo)

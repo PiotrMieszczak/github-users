@@ -1,1 +1,35 @@
-<p>user-details-profile works!</p>
+<tui-island *ngIf="user" size="l" textAlign="center">
+  <div class="tui-island__content">
+    <figure class="tui-island__figure">
+      <tui-avatar [rounded]="true" [avatarUrl]="user.avatar"></tui-avatar>
+    </figure>
+    <h3 class="tui-island__title">{{ user.name }}</h3>
+    <div class="tui-row">
+      <div class="tui-col_xs-12 tui-col_md-12">
+        <label tuiLabel label="Company">
+          {{ user.company }}
+        </label>
+      </div>
+      <div class="tui-col_xs-12 tui-col_md-12">
+        <label tuiLabel label="Email">
+          {{ user.email }}
+        </label>
+      </div>
+      <div class="tui-col_xs-12 tui-col_md-12">
+        <label tuiLabel label="Followers">
+          {{ user.followersCount }}
+        </label>
+      </div>
+      <div class="tui-col_xs-12 tui-col_md-12">
+        <label tuiLabel label="Repos">
+          {{ user.reposCount }}
+        </label>
+      </div>
+    </div>
+    <div class="tui-row">
+      <p class="tui-col_xs-12 tui-col_md-12">
+        {{ user.bio }}
+      </p>
+    </div>
+  </div>
+</tui-island>

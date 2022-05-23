@@ -1,0 +1,19 @@
+.viewport {
+  height: 24rem;
+
+  &::ng-deep {
+    .cdk-virtual-scroll-content-wrapper {
+      max-width: 100%;
+    }
+  }
+
+  &__item {
+    min-height: 4rem;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid var(    --tui-link-hover);
+      border-radius: var(--tui-radius-l);
+    }
+  }
+}

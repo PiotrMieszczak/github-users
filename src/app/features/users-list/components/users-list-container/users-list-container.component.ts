@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { User, UsersListQuery } from '../../../../store/users-list';
 import { Observable } from 'rxjs';
 
@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
   selector: 'app-users-list-container',
   templateUrl: './users-list-container.component.html',
   styleUrls: ['./users-list-container.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersListContainerComponent {
   users$: Observable<User[]>;

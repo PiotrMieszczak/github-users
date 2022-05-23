@@ -1,1 +1,18 @@
-<p>user-details-repos works!</p>
+<tui-scrollbar>
+  <cdk-virtual-scroll-viewport
+    tuiScrollable
+    itemSize="30"
+    class="viewport tui-zero-scrollbar">
+    <div
+      *cdkVirtualFor="let repo of repos"
+      class="viewport__item tui-space_right-4 tui-space_bottom-2">
+      <a tuiIsland [href]="repo.url">
+        <div class="tui-island__content">
+          <label tuiLabel [label]="repo.name">
+            {{ repo.description }}
+          </label>
+        </div>
+      </a>
+    </div>
+  </cdk-virtual-scroll-viewport>
+</tui-scrollbar>
