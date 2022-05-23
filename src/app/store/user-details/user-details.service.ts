@@ -29,10 +29,11 @@ export class UserDetailsService {
   ) {}
 
   getData(login: string): Observable<any> {
-    const details$ = this.getUserDetails(login);
-    const followers$ = this.getFollowers(login);
-    const repos$ = this.getRepos(login);
-    return merge(details$, followers$, repos$);
+    return merge(
+      this.getUserDetails(login),
+      this.getFollowers(login),
+      this.getRepos(login)
+    );
   }
 
   private getUserDetails(login: string): Observable<UserDetailed> {

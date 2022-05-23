@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { filter, map, Observable } from 'rxjs';
+import { filter, map, Observable, take } from 'rxjs';
 import { UserDetailsService } from '../../../../store/user-details/user-details.service';
 import { User } from '../../../../store/users-list';
 import { UserDetailsQuery } from '../../../../store/user-details/user-details.query';
@@ -42,7 +42,7 @@ export class UserDetailsContainerComponent {
   }
 
   private getData(login: string): void {
-    this._userDetailsService.getData(login).subscribe();
+    this._userDetailsService.getData(login).pipe(take(1)).subscribe();
   }
 
   private getFollowers(): Observable<User[]> {
