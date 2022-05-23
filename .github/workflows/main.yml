@@ -1,4 +1,4 @@
-name: Build posts manager project
+name: Build & publish project
 on:
   push:
     branches: [main]
