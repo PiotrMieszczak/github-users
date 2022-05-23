@@ -20,30 +20,24 @@ export class UserDetailed extends User {
       repos_url: props.repos_url,
       followers_url: props.followers_url,
     });
-    this.homeUrl = props.html_url;
     this.name = props.name;
     this.company = props.company;
-    this.blog = props.blog;
     this.location = props.location;
     this.email = props.email;
     this.bio = props.bio;
     this.reposCount = props.public_repos;
     this.followersCount = props.followers;
-    this.createdAt = new Date(props.created_at);
   }
 }
 
 export interface IUserDetailed extends IUser {
-  html_url: string;
   name: string;
   company: string;
-  blog: string;
   location: string;
   email: string;
   bio: string;
   public_repos: number;
   followers: number;
-  created_at: string;
 }
 
 export class Repo {

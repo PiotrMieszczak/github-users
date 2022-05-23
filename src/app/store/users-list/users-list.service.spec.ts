@@ -7,7 +7,7 @@ import { UsersListService } from './users-list.service';
 import { UsersListStore } from './users-list.store';
 import { environment } from '../../../environments/environment';
 
-const mockPostData = [
+const mockUserData = [
   {
     login: 'mojo',
     id: 13878579,
@@ -44,9 +44,8 @@ const mockPostData = [
   },
 ];
 
-describe('GetData', () => {
+describe('UsersListService', () => {
   let spectator: SpectatorService<UsersListService>;
-  let postsListService: UsersListService;
   let postsListStore: UsersListStore;
   let httpController: HttpTestingController;
 
@@ -58,7 +57,6 @@ describe('GetData', () => {
 
   beforeEach(() => {
     spectator = createService();
-    postsListService = spectator.inject(UsersListService);
     postsListStore = spectator.inject(UsersListStore);
     httpController = spectator.inject(HttpTestingController);
   });
@@ -69,7 +67,7 @@ describe('GetData', () => {
       '/search/users?q=mojo+in:login&type=Users&per_page=100';
 
     spectator.service.searchByName('mojo').subscribe(res => {
-      expect(res).toEqual(mockPostData);
+      expect(res).toEqual(mockUserData);
     });
 
     const req = httpController.expectOne({
@@ -77,6 +75,6 @@ describe('GetData', () => {
       url: `${url}`,
     });
 
-    req.flush(mockPostData);
+    req.flush(mockUserData);
   });
 });
