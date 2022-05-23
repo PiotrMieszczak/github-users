@@ -5,6 +5,7 @@ import { TuiButtonModule } from '@taiga-ui/core';
 import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component';
 import { TuiToggleModule } from '@taiga-ui/kit';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [HeaderComponent, ThemeSwitcherComponent],
@@ -14,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TuiButtonModule,
     TuiToggleModule,
     ReactiveFormsModule,
+    RouterModule,
   ],
   exports: [HeaderComponent],
 })

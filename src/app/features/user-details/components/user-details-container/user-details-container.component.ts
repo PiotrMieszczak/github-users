@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { filter, map, Observable, take } from 'rxjs';
+import { filter, map, Observable, take, tap } from 'rxjs';
 import { UserDetailsService } from '../../../../store/user-details/user-details.service';
 import { User } from '../../../../store/users-list';
 import { UserDetailsQuery } from '../../../../store/user-details/user-details.query';
@@ -18,6 +18,7 @@ export class UserDetailsContainerComponent {
   followers$: Observable<User[]>;
   userDetails$: Observable<UserDetailed | null>;
   repos$: Observable<Repo[]>;
+  loaded = false;
 
   constructor(
     private readonly _router: ActivatedRoute,
@@ -33,10 +34,12 @@ export class UserDetailsContainerComponent {
   private startRouterSub(): void {
     this._router.paramMap
       .pipe(
+        tap(() => (this.loaded = false)),
         map(paramMap => paramMap.get('login')),
         filter(Boolean)
       )
       .subscribe((login: string) => {
+        this.loaded = true;
         this.getData(login);
       });
   }

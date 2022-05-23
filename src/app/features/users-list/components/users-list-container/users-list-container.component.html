@@ -5,6 +5,7 @@
       class="tui-col_xs-12 tui-col_lg-12 tui-col_md-12"></app-users-list-searchbar>
   </div>
   <app-users-list
+    [class.tui-skeleton]="(users$ | async) === null"
     [users]="(users$ | async) || []"
     class="tui-row tui-row_adaptive"></app-users-list>
 </div>

@@ -73,7 +73,9 @@ describe('getUserDetails', () => {
       environment.apiUrl + '/users/mojo/followers?q=per_page=100';
     const reposUrl = environment.apiUrl + '/users/mojo/repos?q=per_page=100';
 
-    spectator.service.getData('mojo').subscribe();
+    spectator.service.getData('mojo').subscribe(res => {
+      expect(res).toEqual([mockUserData, [mockUserData], mockRepoData]);
+    });
 
     const reqUserDetails = httpController.expectOne({
       method: 'GET',

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserDetailsStore } from './user-details.store';
 import { HttpService } from '../../http.service';
-import { filter, map, merge, Observable } from 'rxjs';
+import { filter, forkJoin, map, Observable } from 'rxjs';
 import { assertProperties } from '../../utils/utils';
 import { GITHUB_USER_PROPS, IUser, User } from '../users-list';
 import { IRepo, IUserDetailed, Repo, UserDetailed } from './user-detail.model';
@@ -29,11 +29,11 @@ export class UserDetailsService {
   ) {}
 
   getData(login: string): Observable<any> {
-    return merge(
+    return forkJoin([
       this.getUserDetails(login),
       this.getFollowers(login),
-      this.getRepos(login)
-    );
+      this.getRepos(login),
+    ]);
   }
 
   private getUserDetails(login: string): Observable<UserDetailed> {
