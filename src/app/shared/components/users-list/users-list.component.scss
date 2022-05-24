@@ -1,0 +1,20 @@
+
+tui-scrollbar {
+  width: 100%;
+}
+.viewport {
+  height: 50rem;
+
+  &::ng-deep {
+    .cdk-virtual-scroll-content-wrapper {
+      max-width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__item {
+    min-height: 4rem;
+    cursor: pointer;
+  }
+}
